@@ -4,35 +4,65 @@ CREATE database company_DB;
 USE company_DB;
 
 CREATE TABLE employee (
-  id INTEGER AUTO_INCREMENT ,
+  id INT AUTO_INCREMENT NOT NULL,
   role_id INTEGER,
   first_name VARCHAR(30),
   last_name VARCHAR(30),
-  manager_id INTEGER(10),
+  manager_id INT,
+  FOREIGN KEY (role_id) REFERENCES role(id),
   PRIMARY KEY (id)
 );
 
 CREATE TABLE role (
-  role_id INTEGER(10),
+  id INT AUTO_INCREMENT NOT NULl,
   title VARCHAR(30),
   salary DECIMAl(10,2),
-  department_id INTEGER(10),
-  PRIMARY KEY (department_id)
+  department_id INT,
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE department (
-  id INTEGER (10),
+  id INT AUTO_INCREMENT NOT NULl,
   name VARCHAR(30),
   PRIMARY KEY (id)
 );
 
+INSERT INTO department (name)
+VALUES ("Finance");
 
+INSERT INTO department (name)
+VALUES ("Sales");
+
+INSERT INTO department (name)
+VALUES ("Engineering");
+
+INSERT INTO department (name)
+VALUES ("Legal");
 
 INSERT INTO employee (role_id, first_name, last_name, manager_id)
 VALUES (1, "Carol", "Smith", 2);
 
-INSERT INTO role (role_id, title, salary, department_id)
-VALUES (1, "Manager", 75000, 2);
+INSERT INTO employee (role_id, first_name, last_name, manager_id)
+VALUES (2, "John", "Taylor", 2);
+
+INSERT INTO employee (role_id, first_name, last_name, manager_id)
+VALUES (3, "Mark", "Jackson", 2);
+
+INSERT INTO role (title, salary, department_id)
+VALUES ("Manager", 75000, 2);
+
+INSERT INTO role (title, salary, department_id)
+VALUES ("Sales Lead", 60000, 3);
+
+INSERT INTO role (title, salary, department_id)
+VALUES ("Sales Person", 50000, 4);
+
+INSERT INTO role (title, salary, department_id)
+VALUES ("Lead Engineer", 100000, 5);
+
+INSERT INTO role (title, salary, department_id)
+VALUES ("Sogtware Engineer", 85000, 6);
 
 SELECT * FROM employee;
-SELECT * from role;
+SELECT * FROM role;
+SELECT * FROM department;
