@@ -34,6 +34,7 @@ const startSearch = () => {
         "Add a Role",
         "Remove a Role",
         "Remove a Department",
+        "Exit",
       ],
     })
     .then((answer) => {
@@ -84,6 +85,11 @@ const startSearch = () => {
 
         case "Remove a Department":
           removeDepartment();
+          break;
+
+        case "Exit":
+          connection.end();
+          console.log("Thanks and have a great day!");
           break;
 
         default:
